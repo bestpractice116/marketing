@@ -4,7 +4,8 @@ import InfoPanel from './components/InfoPanel';
 function App() {
   // Use the local PDF file from the public directory
   // const pdfUrl = `${process.env.PUBLIC_URL}/IIM_Shillong_Executive_MBA.pdf`;
-  const pdfUrl = "https://drive.google.com/file/d/1FqcLbTQmBQMD0vZQ3-Ug-hGCCqTFyhKB/view?usp=sharing"
+  // const pdfUrl = "https://drive.google.com/file/d/1FqcLbTQmBQMD0vZQ3-Ug-hGCCqTFyhKB/view?usp=sharing"
+  const pdfUrl = "/IIM_Shillong_Executive_MBA.pdf";
   return (
     <div className="flex h-screen">
       <div className="flex-1 border-r overflow-auto">
