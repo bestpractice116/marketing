@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { ZoomIn, ZoomOut } from 'lucide-react';
+import { ClipLoader } from 'react-spinners';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
@@ -15,9 +16,11 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
   const [numPages, setNumPages] = useState<number>(0);
   const [scale, setScale] = useState<number>(1.0);
   const [containerWidth, setContainerWidth] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
+    setLoading(false);
   }
 
   const zoomIn = () => setScale(prev => prev + 0.1);
@@ -48,7 +51,12 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
         </div>
       </div>
       <div className="flex-1 overflow-auto bg-gray-700">
-        <div className="max-w-4xl mx-auto my-4" ref={ref => ref && setContainerWidth(ref.clientWidth)}>
+        {loading && (
+          <div className="flex items-center justify-center h-full">
+            <ClipLoader color="#ffffff" size={50} />
+          </div>
+        )}
+        <div className={`max-w-4xl mx-auto my-4 ${loading ? 'hidden' : ''}`} ref={ref => ref && setContainerWidth(ref.clientWidth)}>
           <Document
             file={pdfUrl}
             onLoadSuccess={onDocumentLoadSuccess}
