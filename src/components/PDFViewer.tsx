@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { ZoomIn, ZoomOut } from 'lucide-react';
 import { ClipLoader } from 'react-spinners';
@@ -17,6 +17,19 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
   const [scale, setScale] = useState<number>(1.0);
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setContainerWidth(document.documentElement.clientWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Set initial width
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
