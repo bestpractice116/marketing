@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { ZoomIn, ZoomOut } from 'lucide-react';
 import { ClipLoader } from 'react-spinners';
@@ -17,6 +17,8 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
   const [scale, setScale] = useState<number>(1.0);
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,6 +30,28 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const pageElements = containerRef.current.querySelectorAll('.react-pdf__Page');
+      let current = 1;
+      pageElements.forEach((page, index) => {
+        const rect = page.getBoundingClientRect();
+        if (rect.top <= containerRef.current!.clientHeight / 2) {
+          current = index + 1;
+        }
+      });
+      setCurrentPage(current);
+    };
+
+    const container = containerRef.current;
+    container?.addEventListener('scroll', handleScroll);
+
+    return () => {
+      container?.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -43,7 +67,7 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
     <div className="h-full flex flex-col">
       <div className="bg-gray-500 p-2 md:p-4 border-b flex items-center justify-between shadow-sm">
         <div className="text-white text-sm md:text-base font-medium md:font-semibold rounded-full bg-gray-600 px-3 py-1">
-          PAGE {numPages > 0 ? '1' : '0'} OF {numPages}
+          PAGE {currentPage} OF {numPages}
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -63,7 +87,7 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
           </button>
         </div>
       </div>
-      <div className="flex-1 overflow-auto bg-gray-700">
+      <div className="flex-1 overflow-auto bg-gray-700" ref={containerRef}>
         {loading && (
           <div className="flex items-center justify-center h-full">
             <ClipLoader color="#ffffff" size={50} />
@@ -73,6 +97,7 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
           <Document
             file={pdfUrl}
             onLoadSuccess={onDocumentLoadSuccess}
+            onLoadError={(error) => console.error('Error loading PDF:', error)}
             className="flex flex-col gap-4"
           >
             {Array.from(new Array(numPages), (_, index) => (
