@@ -66,7 +66,7 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
               <div key={`page_${index + 1}`} className="shadow-lg">
                 <Page
                   pageNumber={index + 1}
-                  width={containerWidth * scale}
+                  width={Math.min(containerWidth * scale, window.innerWidth)}
                   className="bg-white"
                   renderTextLayer={true}
                   renderAnnotationLayer={true}
