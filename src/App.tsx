@@ -7,7 +7,7 @@ function App() {
   // const pdfUrl = "https://drive.google.com/file/d/1FqcLbTQmBQMD0vZQ3-Ug-hGCCqTFyhKB/view?usp=sharing"
   const pdfUrl = "/IIM_Shillong_Executive_MBA.pdf";
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen pb-[140px] md:pb-0">
       <div className="flex-1 border-r overflow-auto">
         <PDFViewer pdfUrl={pdfUrl} />
       </div>
@@ -22,3 +22,4 @@ function App() {
 }
 
 export default App;
+

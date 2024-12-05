@@ -14,7 +14,7 @@ export default function InfoPanel() {
           <h1 className="text-xl font-bold text-blue-900 text-center">
             If you're ready to upskill, click the button below and complete your application
           </h1>
-          <button 
+          <button
             className="bg-blue-600 text-white px-4 py-1.5 rounded-lg hover:bg-blue-700 transition-colors text-sm"
             onClick={() => window.open('https://apply.nulearn.in/e-mba-iim-shillong', '_blank')}
           >
@@ -50,7 +50,7 @@ export default function InfoPanel() {
           <h2 className="text-md font-bold text-blue-900 text-center">
             Want to schedule a session with one of our counsellors? Block your calendar now!
           </h2>
-          <button 
+          <button
             className="bg-blue-600 text-white px-4 py-1.5 rounded-lg hover:bg-blue-700 transition-colors text-md"
             onClick={() => window.open('https://calendly.com/emba-iimshillong-nulearn', '_blank')}
           >
@@ -58,26 +58,32 @@ export default function InfoPanel() {
           </button>
         </div>
       </div>
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-100 p-4 flex flex-col items-center space-y-2 shadow-lg">
-        <h1 className="text-sm font-bold text-blue-900 text-center">
-          Ready to upskill? Apply now!
-        </h1>
-        <button 
-          className="bg-blue-600 text-white px-4 py-1.5 rounded-lg hover:bg-blue-700 transition-colors text-sm"
-          onClick={() => window.open('https://apply.nulearn.in/e-mba-iim-shillong', '_blank')}
-        >
-          Apply Now
-        </button>
-        <p className="text-red-600 text-xs">
-          Application closing soon
-        </p>
-        <button 
-          className="bg-blue-600 text-white px-4 py-1.5 rounded-lg hover:bg-blue-700 transition-colors text-sm"
-          onClick={() => window.open('https://calendly.com/emba-iimshillong-nulearn', '_blank')}
-        >
-          Talk to an Expert
-        </button>
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-3 flex flex-col space-y-2 shadow-lg border-t">
+        <div className="flex justify-between items-center">
+          <div className="flex-1">
+            <p className="text-sm font-medium">
+              Get ready to upskill with IIM Shillong
+            </p>
+            <p className="text-orange-500 text-sm font-medium">
+              Application Closes Soon
+            </p>
+          </div>
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors text-sm font-medium ml-2 whitespace-nowrap"
+            onClick={() => window.open('https://apply.nulearn.in/e-mba-iim-shillong', '_blank')}
+          >
+            Apply Now
+          </button>
+        </div>
+        <div className="flex justify-between items-center">
+          <h2 className="text-lg font-bold">Contact Us</h2>
+          <div className="text-right">
+            <a href="tel:+918777087836" className="text-sm text-gray-600 hover:text-gray-800 block">+918777087836</a>
+            <a href="mailto:emba.iimshillong@nulearn.in" className="text-sm text-gray-600 hover:text-gray-800 block">emba.iimshillong@nulearn.in</a>
+          </div>
+        </div>
       </div>
     </>
   );
 }
+

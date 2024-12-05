@@ -41,9 +41,9 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="bg-gray-500 p-4 border-b flex items-center justify-between shadow-sm">
-        <div className="text-white font-semibold">
-          Total Pages: {numPages}
+      <div className="bg-gray-500 p-2 md:p-4 border-b flex items-center justify-between shadow-sm">
+        <div className="text-white text-sm md:text-base font-medium md:font-semibold rounded-full bg-gray-600 px-3 py-1">
+          PAGE {numPages > 0 ? '1' : '0'} OF {numPages}
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -92,3 +92,4 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
     </div>
   );
 }
+
