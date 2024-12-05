@@ -11,7 +11,10 @@ function App() {
       <div className="flex-1 border-r overflow-auto">
         <PDFViewer pdfUrl={pdfUrl} />
       </div>
-      <div className="w-[300px] flex-shrink-0">
+      <div className="hidden md:flex w-[300px] flex-shrink-0">
+        <InfoPanel />
+      </div>
+      <div className="md:hidden">
         <InfoPanel />
       </div>
     </div>
