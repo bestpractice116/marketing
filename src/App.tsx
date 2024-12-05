@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import PDFViewer from './components/PDFViewer';
 import InfoPanel from './components/InfoPanel';
 
@@ -8,10 +8,10 @@ function App() {
 
   return (
     <div className="flex h-screen">
-      <div className="flex-1 border-r">
+      <div className="flex-1 border-r overflow-auto">
         <PDFViewer pdfUrl={pdfUrl} />
       </div>
-      <div className="w-[230px] ">
+      <div className="w-[300px] flex-shrink-0">
         <InfoPanel />
       </div>
     </div>
