@@ -4,7 +4,7 @@ import { ZoomIn, ZoomOut } from 'lucide-react';
 import { ClipLoader } from 'react-spinners';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
-
+import PopUp from "./Popup"
 // Set up PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
@@ -19,7 +19,13 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(()=>{
+setTimeout(() => {
+  setIsOpen(true)
+}, 5000);
+  },[])
   useEffect(() => {
     const handleResize = () => {
       setContainerWidth(document.documentElement.clientWidth);
@@ -114,6 +120,7 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
           </Document>
         </div>
       </div>
+      <PopUp isOpen={isOpen} setIsOpen={setIsOpen}/>
     </div>
   );
 }
