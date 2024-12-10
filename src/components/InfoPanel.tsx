@@ -1,5 +1,5 @@
 import { Phone, Mail } from 'lucide-react';
-import pic from "/logo.png"
+import pic from "../logo.png"
 
 export default function InfoPanel() {
   return (
@@ -9,13 +9,13 @@ export default function InfoPanel() {
           <img
             src={pic}
             alt="Profile"
-            className="rounded-full w-24 h-24"
+            className=" w-24 h-32"
           />
-          <h1 className="text-lg font-bold text-blue-900 ">
+          <h1 className="text-md font-bold text-blue-900 ">
             If you're ready to upskill, click the button below and complete your application
           </h1>
           <button
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-base"
+            className="bg-[#036637] text-white px-4 py-2 rounded-lg hover:bg-[#036637] transition-colors text-base"
             onClick={() => window.open('https://apply.nulearn.in/e-mba-iim-shillong', '_blank')}
           >
             Apply Now
@@ -26,32 +26,34 @@ export default function InfoPanel() {
           <h2 className="text-lg font-bold text-blue-900">
             Unsure? Got Questions?
           </h2>
-          <p className="text-gray-600 text-sm">
-            Get in touch with our team and receive an in-depth understanding of the program and how it can help in proliferating your career prospects
-          </p>
-          <div className="flex items-start gap-3  w-full">
-            <Phone className="w-5 h-5 text-blue-600 mt-1" />
+        <div className='bg-[#036637] text-white px-5 py-5 rounded-md '>
+        <div className=" text-lg font-bold text-center ">
+           Connect With Us
+          </div>
+          <div className="flex items-start gap-3  w-full mt-5">
+            <Phone className="w-5 h-5 mt-1" />
             <div className=''>
-              <h3 className="font-semibold text-gray-900 text-sm">Phone</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="font-semibold  text-sm">Phone</h3>
+              <p className=" text-sm">
                 <a href="tel:+918777087836" className="hover:underline">+918777087836</a>
               </p>
             </div>
           </div>
-          <div className="flex items-start gap-3 w-full">
-            <Mail className="w-5 h-5 text-blue-600 mt-1" />
+          <div className="flex items-start gap-3 w-full mt-5">
+            <Mail className="w-5 h-5mt-1" />
             <div>
-              <h3 className="font-semibold text-gray-900 text-sm">Email</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="font-semibold  text-sm">Email</h3>
+              <p className=" text-sm">
                 <a href="mailto:emba.iimshillong@nulearn.in" className="hover:underline">emba.iimshillong@nulearn.in</a>
               </p>
             </div>
           </div>
+        </div>
           <h2 className="text-md font-bold text-blue-900 ">
             Want to schedule a session with one of our counsellors? Block your calendar now!
           </h2>
           <button
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-md"
+            className="bg-[#036637] text-white px-4 py-2 rounded-lg hover:bg-[#036637] transition-colors text-md"
             onClick={() => window.open('https://calendly.com/emba-iimshillong-nulearn', '_blank')}
           >
             Talk to an Expert

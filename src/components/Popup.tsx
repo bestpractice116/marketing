@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "/banner.png"; // Ensure the image is in the 'public' directory or handled by Vite's asset pipeline
+import Banner from "../banner.png"; // Ensure the image is in the 'public' directory or handled by Vite's asset pipeline
 
 // Define prop types
 interface PopupProps {

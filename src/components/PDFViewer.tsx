@@ -21,11 +21,15 @@ export default function PDFViewer({ pdfUrl }: PDFViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(()=>{
-setTimeout(() => {
-  setIsOpen(true)
-}, 5000);
-  },[])
+  // useEffect(() => {
+  //   if (!isOpen) {
+  //     const timer = setTimeout(() => {
+  //       setIsOpen(true);
+  //     }, 10000); // Reopen the popup after 10 seconds
+
+  //     return () => clearTimeout(timer); // Clean up the timer when the component unmounts
+  //   }
+  // }, [isOpen]);
   useEffect(() => {
     const handleResize = () => {
       setContainerWidth(document.documentElement.clientWidth);
